@@ -213,4 +213,4 @@ Use ``src/examples`` directory to create new API SDK
 
 
 ## Credits
-Special thanks to @arianet-crm
+Special thanks to [arianet](https://www.ariaservice.net) Company
