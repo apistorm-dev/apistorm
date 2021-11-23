@@ -127,3 +127,22 @@ In second example ``PHPStorm`` can parse `input/output` fileds like this:
 ### Classified response in `PHPSTORM`:
 
 ![](https://github.com/yiiman-dev/apistorm/blob/main/.pictures/2.png)
+
+
+## Install apiStorm
+`composer install yiiman/apistorm`
+
+
+## Usage
+
+
+
+Clone project and check [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) file for full example
+you can execute [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) in console with to see results:
+
+`php index.php`
+
+
+
+## Credits
+Special thanks to @arianet-crm
