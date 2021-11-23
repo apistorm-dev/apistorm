@@ -133,6 +133,59 @@ In second example ``PHPStorm`` can parse `input/output` fileds like this:
 `composer install yiiman/apistorm`
 
 
+## concept
+
+Suggested strusture for standard SDK is like this:
+
+```
+---src\
+    |
+    ---Responses\
+        |
+        ---ResponseClass1.php               // extended from YiiMan\ApiStorm\Post\BasePostData
+        |--- public $field0;                // Required fields will ends by "0"
+        |--- public $anotherField;          // Optional field
+        |
+        ---ResponseClass2.php               // extended from YiiMan\ApiStorm\Post\BasePostData
+        |--- public $field0;                // Required fields will ends by "0"
+        |--- public $anotherField;          // Optional field
+        |
+        .
+        .
+        .
+    |
+    ---Posts\
+       |
+       ---PostClass1.php                   // extended from YiiMan\ApiStorm\Response\BaseResponse
+       |--- public $responseField1='int';  // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
+       |--- public $responseField2='';     // if you set empty string, its main string type
+       |
+       ---PostClass2.php                   // extended from YiiMan\ApiStorm\Response\BaseResponse
+       |--- public $responseField1='int';  // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
+       |--- public $responseField2='';     // if you set empty string, its main string type
+    |
+    --- SDKClass.php
+    |--- firstMethod(PostClass1 $data):ResponseClass1{
+        if ($product->validated()) {
+
+            // you will send $product to your server
+            $response = $this->call('6c81aa91-63a1-43d9-abb6-6b5398716f81', $product);
+
+
+            if ($response->isSuccess()) {
+                $response = new CreateProductResponse($response);
+            }
+            // <  Here, you have classified response >
+              return $response;
+            // </ Here, you have classified response >
+        } else {
+            return false;
+        }
+    }
+  
+```
+
+
 ## Usage
 
 
@@ -145,6 +198,8 @@ you can execute [index.php](https://github.com/yiiman-dev/apistorm/blob/main/ind
 
 `php index.php`
 
+
+Use ``src/examples`` directory to create new API SDK
 
 
 ## Credits
