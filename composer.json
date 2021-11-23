@@ -2,7 +2,7 @@
   "name": "yiiman/apistorm",
   "description": "Create structured APIs and classified responses that can know by modern IDEs",
   "type": "library",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "YiiMan",

@@ -62,7 +62,7 @@ $sdk->addsrv(
 );
 ```
 
-This is dirty API method
+This is dirty for an API method
 
 You can use this api just after read API documents from their website everytime,because you dont know array parameters
 
