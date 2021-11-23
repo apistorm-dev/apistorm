@@ -169,11 +169,13 @@ Suggested strusture for standard SDK is like this:
        .
     |
     --- SDKClass.php
+    |--- public $protocol = 'https';
+    |--- public $baseURl = 'someURL';
     |--- firstMethod(PostClass1 $data):ResponseClass1{
-        if ($product->validated()) {
+        if ($data->validated()) {
 
-            // you will send $product to your server
-            $response = $this->call('6c81aa91-63a1-43d9-abb6-6b5398716f81', $product);
+            // you will send $data to your server
+            $response = $this->call('path/to/api/url', $data);
 
 
             if ($response->isSuccess()) {
