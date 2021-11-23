@@ -8,12 +8,11 @@ A big problem in most SDKs is input/output array|objects
 
 For example you have a [virtualizor api SDK](https://github.com/bennetgallein/VirtualizorPHP)!
 
-In this SDK for use of every method you should reade document
+In this SDK for use of every method you should read documents
 is [virtualizor site](https://www.virtualizor.com/admin-api/create-vps)
 
-For example i want use ``addsrv`` method
+For example i want use ``addsrv`` method:
 
-i need to know what is array parameters for input on ``addsrv`` method like this:
 
 ```php
 $sdk->addsrv(
@@ -65,11 +64,11 @@ $sdk->addsrv(
 
 This is dirty API method
 
-you can use this api just after read API documents from their website everytime
+You can use this api just after read API documents from their website everytime,because you dont know array parameters
 
-So you'll get returned array after request this method!!!
+Then you'll get an array after request from this method!!!
 
-This is wrong to
+This is wrong and dirty to
 
 ## What is ``apiStorm``?
 
