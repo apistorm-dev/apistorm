@@ -138,8 +138,9 @@ In second example ``PHPStorm`` can parse `input/output` fileds like this:
 
 
 Clone project and check [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) file for full example
-you can execute [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) in console with to see results:
+you can execute [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) in console to see results:
 
+`composer install`
 `php index.php`
 
 
