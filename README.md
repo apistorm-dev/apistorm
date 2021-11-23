@@ -163,6 +163,10 @@ Suggested strusture for standard SDK is like this:
        ---PostClass2.php                   // extended from YiiMan\ApiStorm\Response\BaseResponse
        |--- public $responseField1='int';  // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
        |--- public $responseField2='';     // if you set empty string, its main string type
+       |
+       .
+       .
+       .
     |
     --- SDKClass.php
     |--- firstMethod(PostClass1 $data):ResponseClass1{
@@ -182,6 +186,10 @@ Suggested strusture for standard SDK is like this:
             return false;
         }
     }
+    |
+    .
+    .
+    .
   
 ```
 
