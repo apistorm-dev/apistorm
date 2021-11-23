@@ -1,0 +1,25 @@
+{
+  "name": "yiiman/apistorm",
+  "description": "Create structured APIs and classified responses that can know by modern IDEs",
+  "type": "library",
+  "license": "Apache License 2.0",
+  "authors": [
+    {
+      "name": "YiiMan",
+      "email": "info@yiiman.ir",
+      "homepage": "https://yiiman.ir"
+    },
+    {
+      "name": "AriaNet",
+      "email": "develop@ariaservice.net",
+      "homepage": "https://ariaservice.net"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "YiiMan\\ApiStorm\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "require": {}
+}
