@@ -18,7 +18,7 @@ class BaseResponse extends Res
      */
     public function __construct($data)
     {
-        if (is_callable($data)) {
+        if (is_object($data)) {
             if ($data->isSuccess()) {
                 $this->setSuccess();
                 $this->parseSingle((array) $data->getData());
