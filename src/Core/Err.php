@@ -17,10 +17,9 @@ namespace YiiMan\ApiStorm\Core;
 /**
  * Class Err
  * @package YiiMan\ApiStorm\Core
- *
- * @property string $status_title
- * @property string $status_description
- * @property string $message
+ * @property string  $status_title
+ * @property string  $status_description
+ * @property string  $message
  * @property integer $errorCode
  */
 class Err
@@ -176,9 +175,9 @@ class Err
         ];
 
 
-    public function __construct(int $ErrCode,  $message = '')
+    public function __construct(int $ErrCode, $message = '')
     {
-        $this->errorCode=$ErrCode;
+        $this->errorCode = $ErrCode;
         if (!empty($this->status_titles[$ErrCode])) {
             $this->status_title = $this->status_titles[$ErrCode];
         }

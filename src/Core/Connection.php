@@ -27,13 +27,19 @@ class Connection
 
     public $protocol = 'https';
     public $baseURL = '';
+    public $port=null;
 
     public $responseType = self::CONTENT_TYPE_JSON;
 
     function call($path, $get = [], $post = [], $cookies = [], $method = 'post')
     {
+        if (empty($this->port)) {
 
-        $url = ($this->protocol).'://'.$this->baseURL.'/'.$path;
+            $url = ($this->protocol).'://'.$this->baseURL.'/'.$path;
+        }else{
+            $url = ($this->protocol).'://'.$this->baseURL.':'.$this->port.'/'.$path;
+
+        }
         if (!empty($get)) {
             $url .= '?'.http_build_query($get);
         }

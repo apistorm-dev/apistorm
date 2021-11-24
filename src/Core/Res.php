@@ -35,6 +35,7 @@ class Res
 
     public function setError($ErrCode, $message)
     {
+        $this->setUnSuccess();
         $this->errors0000 = new Err($ErrCode, $message);
     }
 
