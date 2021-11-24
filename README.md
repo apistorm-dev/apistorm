@@ -130,7 +130,7 @@ In second example ``PHPStorm`` can parse `input/output` fileds like this:
 
 
 ## Install apiStorm
-`composer install yiiman/apistorm`
+`composer require yiiman/apistorm`
 
 
 ## concept
