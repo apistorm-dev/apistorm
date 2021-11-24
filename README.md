@@ -150,13 +150,13 @@ Suggested strusture for standard SDK is like this:
     |
     ---Responses\
         |
-        ---ResponseClass1.php               // extended from YiiMan\ApiStorm\Post\BasePostData
-        |--- public $responseField1='int';  // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
-        |--- public $responseField2='';     // if you set empty string, its main string type
+        ---ResponseClass1.php                      // extended from YiiMan\ApiStorm\Post\BasePostData
+        |--- public $responseField1='int';         // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
+        |--- public $responseField2='';            // if you set empty string, its main string type
         |
-        ---ResponseClass2.php               // extended from YiiMan\ApiStorm\Post\BasePostData
-        |--- public $responseField1='int';  // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
-        |--- public $responseField2='';     // if you set empty string, its main string type
+        ---ResponseClass2.php                      // extended from YiiMan\ApiStorm\Post\BasePostData
+        |--- public $responseField1='int';         // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
+        |--- public $responseField2='';            // if you set empty string, its main string type
         |
         .
         .
@@ -164,14 +164,14 @@ Suggested strusture for standard SDK is like this:
     |
     ---Posts\
        |
-       ---PostClass1.php                   // extended from YiiMan\ApiStorm\Response\BaseResponse
-       |--- public int    $field0;         // Required fields will ends by "0"
-       |--- public string $anotherField;   // Optional field
+       ---PostClass1.php                          // extended from YiiMan\ApiStorm\Response\BaseResponse
+       |--- public int    $field0;                // Required fields will ends by "0"
+       |--- public string $anotherField='test';   // Optional field
        
        |
-       ---PostClass2.php                   // extended from YiiMan\ApiStorm\Response\BaseResponse
-       |--- public array $field0;          // Required fields will ends by "0"
-       |--- public int   $anotherField;    // Optional field
+       ---PostClass2.php                          // extended from YiiMan\ApiStorm\Response\BaseResponse
+       |--- public array $field0;                 // Required fields will ends by "0"
+       |--- public int   $anotherField=2;         // Optional field
        |
        .
        .
