@@ -132,6 +132,14 @@ In second example ``PHPStorm`` can parse `input/output` fileds like this:
 ## Install apiStorm
 `composer require yiiman/apistorm`
 
+OR
+
+```json
+"require": {
+    "yiiman/apistorm": "^0.0.1"
+  }
+```
+
 
 ## concept
 
