@@ -171,7 +171,7 @@ Suggested strusture for standard SDK is like this:
                 {
                     return
                         [
-                            'field0'            => 'int',//You should define input field type: int|string|array|float|object
+                            'field'             => 'int',//You should define input field type: int|string|array|float|object
                             'anotherField'      => 'string',
                         ];
                 }
@@ -183,7 +183,7 @@ Suggested strusture for standard SDK is like this:
                 {
                     return
                         [
-                            'field0'            => 'float',//You should define input field type: int|string|array|float|object
+                            'field'             => 'float',//You should define input field type: int|string|array|float|object
                             'anotherField'      => 'int',
                         ];
                 }
