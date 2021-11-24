@@ -165,13 +165,13 @@ Suggested strusture for standard SDK is like this:
     ---Posts\
        |
        ---PostClass1.php                   // extended from YiiMan\ApiStorm\Response\BaseResponse
-       |--- public $field0;                // Required fields will ends by "0"
-       |--- public $anotherField;          // Optional field
+       |--- public int    $field0;         // Required fields will ends by "0"
+       |--- public string $anotherField;   // Optional field
        
        |
        ---PostClass2.php                   // extended from YiiMan\ApiStorm\Response\BaseResponse
-       |--- public $field0;                // Required fields will ends by "0"
-       |--- public $anotherField;          // Optional field
+       |--- public array $field0;          // Required fields will ends by "0"
+       |--- public int   $anotherField;    // Optional field
        |
        .
        .
