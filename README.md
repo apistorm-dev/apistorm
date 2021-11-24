@@ -143,12 +143,12 @@ Suggested strusture for standard SDK is like this:
     ---Responses\
         |
         ---ResponseClass1.php               // extended from YiiMan\ApiStorm\Post\BasePostData
-        |--- public $field0;                // Required fields will ends by "0"
-        |--- public $anotherField;          // Optional field
+        |--- public $responseField1='int';  // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
+        |--- public $responseField2='';     // if you set empty string, its main string type
         |
         ---ResponseClass2.php               // extended from YiiMan\ApiStorm\Post\BasePostData
-        |--- public $field0;                // Required fields will ends by "0"
-        |--- public $anotherField;          // Optional field
+        |--- public $responseField1='int';  // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
+        |--- public $responseField2='';     // if you set empty string, its main string type
         |
         .
         .
@@ -157,12 +157,13 @@ Suggested strusture for standard SDK is like this:
     ---Posts\
        |
        ---PostClass1.php                   // extended from YiiMan\ApiStorm\Response\BaseResponse
-       |--- public $responseField1='int';  // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
-       |--- public $responseField2='';     // if you set empty string, its main string type
+       |--- public $field0;                // Required fields will ends by "0"
+       |--- public $anotherField;          // Optional field
+       
        |
        ---PostClass2.php                   // extended from YiiMan\ApiStorm\Response\BaseResponse
-       |--- public $responseField1='int';  // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
-       |--- public $responseField2='';     // if you set empty string, its main string type
+       |--- public $field0;                // Required fields will ends by "0"
+       |--- public $anotherField;          // Optional field
        |
        .
        .
