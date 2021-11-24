@@ -27,7 +27,7 @@ class BaseResponse extends Res
                 $this->setError($data->getError()->errorCode, $data->getError()->message);
             }
         }else{
-            $this->parseSingle((array) $data->getData());
+            $this->parseSingle((array) $data);
         }
     }
 
