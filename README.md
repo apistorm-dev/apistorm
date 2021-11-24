@@ -130,7 +130,95 @@ In second example ``PHPStorm`` can parse `input/output` fileds like this:
 
 
 ## Install apiStorm
-`composer install yiiman/apistorm`
+`composer require yiiman/apistorm`
+
+OR
+
+```json
+"require": {
+    "yiiman/apistorm": "^0.0.1"
+  }
+```
+
+
+## concept
+
+Suggested strusture for standard SDK is like this:
+
+```
+---src\
+    |
+    ---Responses\
+        |
+        ---ResponseClass1.php                      // extended from YiiMan\ApiStorm\Response\BaseResponse
+        |--- public $responseField1='int';         // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
+        |--- public $responseField2='';            // if you set empty string, its main string type
+        |
+        ---ResponseClass2.php                      // extended from YiiMan\ApiStorm\Response\BaseResponse
+        |--- public $responseField1='int';         // you can define one of this data types : int|string|float|serialize|json|array|class|classArray
+        |--- public $responseField2='';            // if you set empty string, its main string type
+        |
+        .
+        .
+        .
+    |
+    ---Posts\
+       |
+       ---PostClass1.php                          // extended from YiiMan\ApiStorm\Post\BasePostData
+       |--- public int    $field0;                // Required fields will ends by "0"
+       |--- public string $anotherField='test';   // Optional field
+       |--- public function rules(): array
+                {
+                    return
+                        [
+                            'field0'            => 'int',//You should define input field type: int|string|array|float|object
+                            'anotherField'      => 'string',
+                        ];
+                }
+       |
+       ---PostClass2.php                          // extended from YiiMan\ApiStorm\Post\BasePostData
+       |--- public array $field0;                 // Required fields will ends by "0"
+       |--- public int   $anotherField=2;         // Optional field
+       |--- public function rules(): array
+                {
+                    return
+                        [
+                            'field0'            => 'float',//You should define input field type: int|string|array|float|object
+                            'anotherField'      => 'int',
+                        ];
+                }
+       |
+       |
+       .
+       .
+       .
+    |
+    --- SDKClass.php
+    |--- public $protocol = 'https';
+    |--- public $baseURl = 'someURL';
+    |--- firstMethod(PostClass1 $data):ResponseClass1{
+        if ($data->validated()) {
+
+            // you will send $data to your server
+            $response = $this->call('path/to/api/url', $data);
+
+
+            if ($response->isSuccess()) {
+                $response = new CreateProductResponse($response);
+            }
+            // <  Here, you have classified response >
+              return $response;
+            // </ Here, you have classified response >
+        } else {
+            return false;
+        }
+    }
+    |
+    .
+    .
+    .
+  
+```
 
 
 ## Usage
@@ -138,11 +226,16 @@ In second example ``PHPStorm`` can parse `input/output` fileds like this:
 
 
 Clone project and check [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) file for full example
-you can execute [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) in console with to see results:
+you can execute [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) in console to see results:
+
+`composer install`
+
 
 `php index.php`
 
 
+Use ``src/examples`` directory to create new API SDK
+
 
 ## Credits
-Special thanks to @arianet-crm
+Special thanks to [arianet](https://www.ariaservice.net) Company
