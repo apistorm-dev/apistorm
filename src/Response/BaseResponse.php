@@ -71,7 +71,7 @@ class BaseResponse extends Res
         }
 
 
-        $isClassArray = substr($lowerType, 0, 11) === "classArray:";
+        $isClassArray = substr($lowerType, 0, 11) === "classarray:";
         if ($isClassArray) {
             $className = str_replace('classArray:', '', $type);
             $className = str_replace('ClassArray:', '', $className);
