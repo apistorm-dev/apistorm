@@ -167,11 +167,27 @@ Suggested strusture for standard SDK is like this:
        ---PostClass1.php                          // extended from YiiMan\ApiStorm\Post\BasePostData
        |--- public int    $field0;                // Required fields will ends by "0"
        |--- public string $anotherField='test';   // Optional field
-       
+       |--- public function rules(): array
+                {
+                    return
+                        [
+                            'field0'            => 'int',//You should define input field type: int|string|array|float|object
+                            'anotherField'      => 'string',
+                        ];
+                }
        |
        ---PostClass2.php                          // extended from YiiMan\ApiStorm\Post\BasePostData
        |--- public array $field0;                 // Required fields will ends by "0"
        |--- public int   $anotherField=2;         // Optional field
+       |--- public function rules(): array
+                {
+                    return
+                        [
+                            'field0'            => 'float',//You should define input field type: int|string|array|float|object
+                            'anotherField'      => 'int',
+                        ];
+                }
+       |
        |
        .
        .
