@@ -12,15 +12,22 @@ use YiiMan\ApiStorm\Core\Res;
  */
 class BaseResponse extends Res
 {
-
-    public function __construct(Res $data)
+    /**
+     * BaseResponse constructor.
+     * @param Res|array $data
+     */
+    public function __construct($data)
     {
-        if ($data->isSuccess()) {
-            $this->setSuccess();
+        if (is_callable($data)) {
+            if ($data->isSuccess()) {
+                $this->setSuccess();
+                $this->parseSingle((array) $data->getData());
+            } else {
+                $this->setUnSuccess();
+                $this->setError($data->getError()->errorCode, $data->getError()->message);
+            }
+        }else{
             $this->parseSingle((array) $data->getData());
-        } else {
-            $this->setUnSuccess();
-            $this->setError($data->getError()->errorCode, $data->getError()->message);
         }
     }
 
