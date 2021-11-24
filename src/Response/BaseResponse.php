@@ -65,7 +65,7 @@ class BaseResponse extends Res
             if (isset($data[$attr])) {
                 $this->{$attr} = new $className($data[$attr]);
             } else {
-                $this->{$attr} = new $className([]);
+                $this->{$attr} = null;
             }
             return;
         }
