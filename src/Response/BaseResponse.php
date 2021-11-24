@@ -9,7 +9,6 @@ use YiiMan\ApiStorm\Core\Res;
 /**
  * Class BaseResponse
  * @package YiiMan\VirtualizorSdk\Responses
- *
  */
 class BaseResponse extends Res
 {
@@ -19,9 +18,9 @@ class BaseResponse extends Res
         if ($data->isSuccess()) {
             $this->setSuccess();
             $this->parseSingle((array) $data->getData());
-        }else{
+        } else {
             $this->setUnSuccess();
-            $this->setError($data->getError()->errorCode,$data->getError()->message);
+            $this->setError($data->getError()->errorCode, $data->getError()->message);
         }
     }
 
@@ -92,6 +91,15 @@ class BaseResponse extends Res
                     $this->{$attr} = 0;
                 }
                 break;
+            case 'bool':
+            case 'boolean':
+                if (isset($data[$attr])) {
+                    $this->{$attr} = (bool) $data[$attr];
+                } else {
+                    $this->{$attr} = 0;
+                }
+                break;
+
             case 'array':
                 if (isset($data[$attr])) {
                     $this->{$attr} = (array) $data[$attr];
