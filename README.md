@@ -223,7 +223,7 @@ Suggested strusture for standard SDK is like this:
 
 ## Usage
 
-
+### First way
 
 Clone project and check [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) file for full example
 you can execute [index.php](https://github.com/yiiman-dev/apistorm/blob/main/index.php) in console to see results:
@@ -233,9 +233,112 @@ you can execute [index.php](https://github.com/yiiman-dev/apistorm/blob/main/ind
 
 `php index.php`
 
+### Second way
+#### Step 1
+Create new class for your SDK with name `TestApi.php`:
+
+```php
+class TestApi
+{
+    public $protocol = 'https';
+    public $baseURl = 'n8.yiiman.ir/webhook';
+}
+```
+
+We need a call method for our connections, then we need config an instant of ``ApiStorm``  `call` method inside our call method like this:
+```php
+    /**
+     * @param  YiiMan\ApiStorm\Post\BasePostData  $dataClass
+     * @return YiiMan\ApiStorm\Core\Res
+     */
+    private function call($path, $dataClass, $method = 'post')
+    {
+        $servedArrayOfDataClass = $dataClass->serve();
+        $connection = new YiiMan\ApiStorm\Core\Connection();
+        $connection->baseURL = $this->baseURl;
+        $connection->protocol = 'https';
+
+        return $connection->call($path, [], $servedArrayOfDataClass, [],$method);
+    }
+
+```
 
 Use ``src/examples`` directory to create new API SDK
 
+Now we need some method for use `call` for create connection in our [`TestApi.php`](https://github.com/yiiman-dev/apistorm/blob/main/src/examples/TestApi.php) class like this:
+
+```php
+class TestApi
+{
+    public $protocol = 'https';
+    public $baseURl = 'n8.yiiman.ir/webhook';
+    
+    
+    /**
+     * @param  YiiMan\ApiStorm\Post\BasePostData  $dataClass
+     * @return YiiMan\ApiStorm\Core\Res
+     */
+    private function call($path, $dataClass, $method = 'post')
+    {
+        $servedArrayOfDataClass = $dataClass->serve();
+        $connection = new YiiMan\ApiStorm\Core\Connection();
+        $connection->baseURL = $this->baseURl;
+        $connection->protocol = 'https';
+
+        return $connection->call($path, [], $servedArrayOfDataClass, [],$method);
+    }
+    
+    
+    
+    /**
+     * @param  PostCreateProduct  $product
+     * @return CreateProductResponse|bool
+     */
+    public function createProduct(PostCreateProduct $product)
+    {
+        if ($product->validated()) {
+
+            // you will send $product to your server
+            $response = $this->call('6c81aa91-63a1-43d9-abb6-6b5398716f81', $product,'get');
+
+
+            if ($response->isSuccess()) {
+                $response = new CreateProductResponse($response);
+            }
+
+            return $response;
+            // </ Here, you will classify response >
+        } else {
+            return false;
+        }
+    }
+
+     /**
+     * @param  PostCreateProduct  $product
+     * @return CreateProductResponse|bool
+     */
+    public function createProduct2(PostCreateProduct $product)
+    {
+        if ($product->validated()) {
+
+            // you will send $product to your server
+            $response = $this->call('6c81aa91-63a1-43d9-abb6-6b5398716f81', $product);
+
+
+            if ($response->isSuccess()) {
+                $response = new CreateProductResponse($response);
+            }
+
+            return $response;
+            // </ Here, you will classify response >
+        } else {
+            return false;
+        }
+    }
+}
+```
+
+#### Step 2
 
 ## Credits
 Special thanks to [arianet](https://www.ariaservice.net) Company

@@ -98,7 +98,12 @@ class Connection
         }
 
         if ($res->isSuccess()) {
-            $res->setData($this->parseResponse($resp));
+            $parsedData=$this->parseResponse($resp);
+            if (!$parsedData) {
+                $res->setData($resp);
+            }else{
+                $res->setData($parsedData);
+            }
         } else {
             $res->setError($httpcode, $this->parseResponse($resp));
         }
