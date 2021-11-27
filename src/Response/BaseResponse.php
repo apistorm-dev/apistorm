@@ -21,6 +21,7 @@ class BaseResponse extends Res
         if (is_object($data)) {
             if ($data->isSuccess()) {
                 $this->setSuccess();
+                $this->setData($data);
                 $this->parseSingle((array) $data->getData());
             } else {
                 $this->setUnSuccess();
