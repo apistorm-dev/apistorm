@@ -14,7 +14,7 @@ class BaseResponse extends Res
 {
     /**
      * BaseResponse constructor.
-     * @param Res|array $data
+     * @param  Res|array  $data
      */
     public function __construct($data)
     {
@@ -27,7 +27,7 @@ class BaseResponse extends Res
                 $this->setUnSuccess();
                 $this->setError($data->getError()->errorCode, $data->getError()->message);
             }
-        }else{
+        } else {
             $this->parseSingle((array) $data);
         }
     }
@@ -137,9 +137,15 @@ class BaseResponse extends Res
                 }
                 break;
             case 'string':
-            default:
                 if (isset($data[$attr])) {
                     $this->{$attr} = (string) $data[$attr];
+                } else {
+                    $this->{$attr} = '';
+                }
+                break;
+            default:
+                if (isset($data[$attr])) {
+                    $this->{$attr} = $data[$attr];
                 } else {
                     $this->{$attr} = '';
                 }
