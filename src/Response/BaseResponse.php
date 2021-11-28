@@ -138,7 +138,13 @@ class BaseResponse extends Res
                 break;
             case 'string':
                 if (isset($data[$attr])) {
-                    $this->{$attr} = (string) $data[$attr];
+                    if (is_array( $data[$attr])) {
+                        $this->{$attr} = (array) $data[$attr];
+
+                    }else{
+
+                        $this->{$attr} = (string) $data[$attr];
+                    }
                 } else {
                     $this->{$attr} = '';
                 }
