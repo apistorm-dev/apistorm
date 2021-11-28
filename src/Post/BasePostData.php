@@ -25,9 +25,14 @@ abstract class BasePostData extends BaseObject implements BasePostDataInterface
                 continue;
             }
 
-            $len = strlen($prop->name);
-            $originalField = (string) substr($prop->name, 0, ($len - 1));
 
+            $len = strlen($prop->name);
+            $latestChar = (string) substr($prop->name, ($len - 1), 1);
+            if ($latestChar == "0") {
+                $originalField = (string) substr($prop->name, 0, ($len - 1));
+            }else{
+                $originalField = (string) substr($prop->name, 0, ($len ));
+            }
 
             $out[$originalField] = $this->{$prop->name};
         }
