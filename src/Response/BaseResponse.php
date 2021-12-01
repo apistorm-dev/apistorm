@@ -85,8 +85,8 @@ class BaseResponse extends Res
 
             if (isset($data[$attr])) {
                 $out = [];
-                foreach ($data[$attr] as $key => $item) {
-                    $out[$key] = new $className($item);
+                foreach ($data[$attr] as  $item) {
+                    $out[] = new $className($item);
                 }
                 $this->{$attr} = $out;
             } else {
