@@ -79,10 +79,14 @@ class BaseResponse extends Res
             $className = str_replace('Classarray:', '', $className);
             $className = str_replace('classarray:', '', $className);
             $className = str_replace('CLASSARRAY:', '', $className);
+
+
+            $nestedCount=substr_count($className, '[]');
+
             if (isset($data[$attr])) {
                 $out = [];
-                foreach ($data[$attr] as $item) {
-                    $out[] = new $className($item);
+                foreach ($data[$attr] as $key => $item) {
+                    $out[$key] = new $className($item);
                 }
                 $this->{$attr} = $out;
             } else {
@@ -90,6 +94,8 @@ class BaseResponse extends Res
             }
             return;
         }
+
+
 
         switch ($lowerType) {
             case 'int':
