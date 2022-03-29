@@ -31,7 +31,7 @@ class Connection
 
     public $responseType = self::CONTENT_TYPE_JSON;
 
-    function call($path, $get = [], $post = [], $cookies = [], $method = 'post')
+    function call($path, $get = [], $post = [], $cookies = [], $method = 'post',$headers=[])
     {
         if (empty($this->port)) {
 
@@ -51,10 +51,10 @@ class Connection
 
 
         //conten-type
-        $headers = [
+        $orgheaders = [
             "Accept: application/json",
         ];
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array_merge_recursive($orgheaders,$headers));
 
 
         // Time OUT
