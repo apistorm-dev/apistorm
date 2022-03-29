@@ -57,12 +57,33 @@ class BaseResponse extends Res
     private function setItem($type, $attr, $data)
     {
         $lowerType = strtolower($type);
+        //key_in_object
+        $key_in_object = substr($lowerType, 0, 14) === "key_in_object:";
         $isClass = substr($lowerType, 0, 6) === "class:";
+
+        if ($key_in_object) {
+            $key_in_object = str_replace('key_in_object:', '', $type);
+            $key_in_object = trim($key_in_object);
+            $steps=explode('.',$key_in_object);
+            $object=(object)$data[$steps[0]];
+            if (!empty($object)) {
+                unset($steps[0]);
+                $this->{$attr}=$steps;
+                foreach ($steps as $objectKey){
+                    $object = $object->{$objectKey};
+                }
+                $this->{$attr}=$object;
+            }else{
+                $this->{$attr}='';
+            }
+
+        }
 
         if ($isClass) {
             $className = str_replace('class:', '', $type);
             $className = str_replace('Class:', '', $className);
             $className = str_replace('CLASS:', '', $className);
+            $className = trim($className);
             if (isset($data[$attr])) {
                 $this->{$attr} = new $className($data[$attr]);
             } else {
@@ -81,11 +102,11 @@ class BaseResponse extends Res
             $className = str_replace('CLASSARRAY:', '', $className);
 
 
-            $nestedCount=substr_count($className, '[]');
+            $nestedCount = substr_count($className, '[]');
 
             if (isset($data[$attr])) {
                 $out = [];
-                foreach ($data[$attr] as  $item) {
+                foreach ($data[$attr] as $item) {
                     $out[] = new $className($item);
                 }
                 $this->{$attr} = $out;
@@ -96,8 +117,9 @@ class BaseResponse extends Res
         }
 
 
-
         switch ($lowerType) {
+
+
             case 'int':
                 if (isset($data[$attr])) {
                     $this->{$attr} = (int) $data[$attr];
@@ -144,10 +166,10 @@ class BaseResponse extends Res
                 break;
             case 'string':
                 if (isset($data[$attr])) {
-                    if (is_array( $data[$attr])) {
+                    if (is_array($data[$attr])) {
                         $this->{$attr} = (array) $data[$attr];
 
-                    }else{
+                    } else {
 
                         $this->{$attr} = (string) $data[$attr];
                     }
