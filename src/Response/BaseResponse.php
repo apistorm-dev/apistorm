@@ -76,7 +76,7 @@ class BaseResponse extends Res
             }else{
                 $this->{$attr}='';
             }
-
+            return;
         }
 
         if ($isClass) {
