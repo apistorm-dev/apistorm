@@ -31,7 +31,7 @@ class Connection
 
     public $responseType = self::CONTENT_TYPE_JSON;
 
-    function call($path, $get = [], $post = [], $cookies = [], $method = 'post',$headers=[])
+    function call($path, $get = [], $post = [], $cookies = [], $method = 'post',$headers=[],$is_json=false)
     {
         if (empty($this->port)) {
 
@@ -75,7 +75,13 @@ class Connection
 
         if (!empty($post)) {
             curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+            if ($is_json) {
+                curl_setopt($ch, CURLOPT_POSTFIELDS, @json_encode($post));
+            }else{
+
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+            }
+
         }
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
